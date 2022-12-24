@@ -1,0 +1,34 @@
+def longest(numbers, n):
+    ans = 0
+    count = 0
+    numbers.sort()
+    v = []
+ 
+    v.append(numbers[0])
+
+    for i in range(1, n):
+        if (numbers[i] != numbers[i - 1]):
+            v.append(numbers[i])
+ 
+   
+    # y traversing 
+    for i in range(len(v)):
+        if (i > 0 and v[i] == v[i - 1] + 1):
+            count += 1
+        else:
+            count = 1
+        ans = max(ans, count)
+ 
+    return ans
+ 
+ 
+numbers=[]
+length = int(input("Enter the N:"))
+for i in range(length):
+    item = int(input())
+    numbers.append(item)
+
+n = len(numbers)
+ 
+print("Length of the Longest continuous number in squence",
+      longest(numbers, n))
